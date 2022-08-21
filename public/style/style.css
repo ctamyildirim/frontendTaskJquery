@@ -66,6 +66,7 @@
     box-shadow: 0 10px 25px #0108241A;
     border-radius: 9px;
     margin: 15px auto;
+    overflow: hidden;
 }
 
 .contents_wrapper .contents_head_title{

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap CDN-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!--GoogleFonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Document Style Sheet-->
+    <link rel="stylesheet" href="./style/style.css">
+
+    <title>Frontend Task</title>
+</head>
+<body>
+    <div id="page_inclusive" class="container-fluid">
+        <!--Header-->
+        <div class="header_inclusive">
+            <div class="header_wrapper d-flex justify-content-between align-items-center">
+                <div class="menu_button_content">
+                    <span><img src="./Images/Header/Menu button@3x.png" alt=""></span>
+                </div>
+                <div class="header_title font-12">
+                    Ana Sayfa
+                </div>
+                <div class="header_right_buttons">
+                    <span><img src="./Images/Header/Group 36265@3x.png" alt=""></span>
+                    <span><img src="./Images/Header/Group 36267@3x.png" alt=""></span>
+                </div>
+            </div>
+        </div>
+        <!--Main-->
+        <div class="main_inclusive">
+            <!--Search Input-->
+            <div class="search_input_wrapper">
+                <input class='search_input' type="text" val='' placeholder="Mekan ara">
+                <span class="search_button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14.579" height="14.579" viewBox="0 0 14.579 14.579"><defs><style>.a{opacity:0.4;}.b{fill:#1a1824;}</style></defs><g class="a"><path class="b" d="M6.42,0a6.42,6.42,0,1,0,6.42,6.42A6.428,6.428,0,0,0,6.42,0Zm0,11.655A5.235,5.235,0,1,1,11.655,6.42,5.241,5.241,0,0,1,6.42,11.655Z"/><g transform="translate(9.996 9.996)"><path class="b" d="M355.455,354.617l-3.4-3.4a.593.593,0,1,0-.838.838l3.4,3.4a.593.593,0,0,0,.838-.838Z" transform="translate(-351.046 -351.046)"/></g></g></svg>
+                </span>
+                <span class="filter_button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46"><defs><style>.a{fill:#fff;}.b{fill:#1a1824;}</style></defs><rect class="a" width="46" height="46"/><g transform="translate(15 31) rotate(-90)"><path class="b" d="M4.34,5.6V.715a.714.714,0,1,0-1.429,0V5.6a3.628,3.628,0,0,0,0,7.114V15.93a.714.714,0,1,0,1.429,0V12.715a3.628,3.628,0,0,0,0-7.114Zm-.714,5.753a2.2,2.2,0,1,1,2.2-2.2A2.2,2.2,0,0,1,3.626,11.355Z" transform="translate(8.749)"/><path class="b" d="M4.34,2.013V.715a.715.715,0,1,0-1.429,0v1.3a3.628,3.628,0,0,0,0,7.114v6.8a.715.715,0,1,0,1.429,0V9.121a3.625,3.625,0,0,0,0-7.108ZM3.626,7.766a2.2,2.2,0,1,1,2.2-2.2A2.2,2.2,0,0,1,3.626,7.766Z"/></g></svg>
+                </span>
+            </div>
+            <!--Contents-->
+            <div class="contents_wrapper">
+                <div class="contents_head_title">
+                    <p class="m-0">Sonuçlar</p>
+                </div>
+                <div class="contents row m-0">
+                    <!--Each content card will be appended here-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Jquery & Bootstrap CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Document script files-->
+    <script src="./index.js"></script>
+</body>
+</html>

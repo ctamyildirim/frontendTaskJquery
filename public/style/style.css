@@ -1,0 +1,147 @@
+@import url(./reset.css);
+@import url(./general.css);
+
+.header_wrapper{
+    position: relative;
+}
+.header_wrapper span{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+}
+.header_wrapper span img{
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+}
+.header_wrapper .header_title{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+
+}
+.search_input_wrapper{
+    height: 51px;
+    width: 100%;
+    position: relative;
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow:  0px 10px 25px 0 #0108241A;
+    margin: 25px auto;
+    display: flex;
+    align-items: center; 
+}
+.search_input_wrapper .search_input{
+    font-size: 14px;
+    padding-left: 10%;
+    width: 85%;
+}
+
+.search_input_wrapper .search_button{
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.search_input_wrapper .filter_button{
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content_card{
+    height: 260px;
+    box-shadow: 0 10px 25px #0108241A;
+    border-radius: 9px;
+    margin: 15px auto;
+}
+
+.contents_wrapper .contents_head_title{
+    font-size: 14px;
+}
+
+.contents .content_card .image_inclusive{
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.contents .content_card .image_inclusive > img{
+    width: inherit;
+    height: inherit;
+}
+.contents .content_card .image_inclusive > .rate_zone{
+    position: absolute;
+    width: 56px;
+    height: 32px;
+    top: 8px;
+    left: 8px;
+    background-color: #B70014;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 6px;
+    color: #fff;
+}
+
+.contents .content_card .image_inclusive .rate_zone .star_wrapper > img{
+    width: 13px;
+    height: auto;
+}
+
+.contents .content_card .image_inclusive .rate_zone .rate_wrapper{
+    vertical-align: middle;
+}
+
+.contents_wrapper .contents .content_details{
+    padding: 10px 10px 12px 10px;
+}
+
+.contents .content_details .content_head{
+    height: 53px;
+}
+
+.contents .content_details .content_head > .content_title{
+    font-size: 18px;
+    color: #1A1824;
+    line-clamp: 2;
+    -o-line-clamp: 2;
+    -moz-line-clamp: 2;
+    -ms-line-clamp: 2;
+    -webkit-line-clamp: 2;
+    max-height: 54px;
+    overflow: hidden;
+}
+.contents .content_details .content_head > .content_type{
+    color: #1A1824;
+
+    margin-top: 5px;
+}
+.contents .content_details .content_body .content_min_cost{
+    margin-top: 5px;
+}
+
+.contents .content_details .content_body .content_min_cost > span.img_wrapper{
+    width: 12px;
+    height: 12px;
+}
+.contents .content_details .content_body .content_min_cost > span.text_wrapper{
+    vertical-align: middle;
+}
+
+.contents .content_details .content_body .status_open{
+    color: #34C47C;
+}
+.contents .content_details .content_body .status_close{
+    color: #B70014;
+}
+.contents .content_details .content_body span.workingHours{
+    color: #1A182480;
+}
+

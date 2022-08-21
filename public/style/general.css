@@ -1,0 +1,12 @@
+#page_inclusive{
+    padding: 0 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.font-12{
+    font-size: 12px;
+}
+
+.opacity-50{
+    opacity: 0.5;
+}

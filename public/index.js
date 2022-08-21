@@ -9,7 +9,7 @@ $(document).ready(function(){
     let scrollTop = $(window).scrollTop();
     let body_heigth = $('body').height();
 
-    if(scrollTop > body_heigth - screen_height && is_loading == false){
+    if(scrollTop + 200 > body_heigth - screen_height && is_loading == false){
       is_loading= true;
       postData()
     }

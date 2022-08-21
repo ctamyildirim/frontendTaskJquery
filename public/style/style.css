@@ -3,6 +3,13 @@
 
 .header_wrapper{
     position: relative;
+    padding: 0 16px;
+}
+
+.main_inclusive{
+    position: relative;
+    overflow-y: hidden;
+    padding: 0 16px ;
 }
 .header_wrapper span{
     width: 40px;

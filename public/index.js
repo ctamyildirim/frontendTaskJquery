@@ -10,25 +10,26 @@ $(document).ready(function(){
     let body_heigth = $('body').height();
 
     // Yeterince scroll edildiğinde API Request yapılması
-    if(scrollTop + 400 > body_heigth - screen_height && is_loading == false){ 
+    if(scrollTop + 400 > body_heigth - screen_height && is_loading == false && checked == false){ 
       is_loading= true;
       postData(searchInputValue)
     }
-  })
-  let timeout ;
-  var reset = true;
+    })
+    let timeout ;
+
   $(document).on('keyup', searchInput , ()=>{
     
     clearTimeout(timeout);
     searchInputValue = searchInput.val();
     // Her tuşa basmada sorgu yapmak yerine performans açısından kullanıcı 1sn Boyunca Yazmayı Bırakırsa API sorgusu yapıyoruz.
     timeout = setTimeout(function () {
+        checked = false;
         counter = 0;
-        reset == true ? $('.contents').children().remove() : null ;
+        $('.contents').children().remove()
         postData(searchInputValue)
     }, 1000);
   })
-  
+    
 })
 
 //Restoran Kartlarımızın İşlemleri
@@ -85,59 +86,61 @@ const cardHandling = (item , idx) =>{
 //Search Input Verilerimiz.
 let searchInput = $(".search_input")
 let searchInputValue = searchInput.val();
+var checked = false;
 
 //API Request
 const postData = async (searchInputValue) => {
-  //1- API isteği arama alanından mı yapıldı yoksa diğer yollardan mı kontrol ediyoruz.
-  //2- Search Inputtan yapıldıysa tek seferde istek attığımız data sayısını arttırıyoruz ki filtreleme sonrası
-  // sayfanın scroll olabilecek kadar dolması garantilensin
-  let is_search = true;   
-  payload = {
-    "skip": counter * 20,
-    "limit": 20,
-    "latitude": latitude,
-    "longitude": longitude
-  }
-
-  if (searchInputValue == undefined || searchInputValue == ''){   
+  //Checked = True göstergemiz yapılan bir API sorgusunda tüm dataların çekilmiş ve kontrol edilmiş olduğunu gösterir.
+  // Eğer api sorgusu tamamlandıysa performans açısından tekrar gereksiz sorgu olmaması için baştan kontrol ediyoruz.
+  if (checked == false){
+    //1- API isteği arama alanından mı yapıldı yoksa diğer yollardan mı kontrol ediyoruz.
+    let is_search = true;   
+    let total_api_data_length = 660; //Api içeriside ki total datamız
     payload = {
-      "skip": counter * 5,
-      "limit": 5,
+      "skip": counter * 10,
+      "limit": 10,
       "latitude": latitude,
       "longitude": longitude
     }
-    is_search = false;
-  }
-  //3- API Fetch işlemimizi yapıyoruz.
-    const response =  await fetch("https://smarty.kerzz.com:4004/api/mock/getFeed", {
-        body: JSON.stringify(payload),
-        headers: {
-            Accept: "application/json",
-            Apikey: "bW9jay04ODc3NTU2NjExMjEyNGZmZmZmZmJ2",
-            "Content-Type": "application/json"
-        },
-        method: "POST"
-        })
-    const data = await response.json()
-    //-4 Edindiğimiz datayı map ile dönüyoruz.
-    data.response.map((item , idx) => {
-      //5- API sorgusunun Search Inputtan gelip gelmemesine bağlı olarak kart alanımızı önce temizleyerek daha sonra yeni datalarımızın card handling 
-      //işlemini yapıyoruz.
-
-      if(is_search == true){
-
-        if(item.title.toLowerCase().includes(searchInputValue.toLowerCase()) == true){ // Search Inputtan gelen veriye göre itemleri filtreleme.
-          cardHandling(item, idx);
-          reset = false;
+    if (searchInputValue == undefined || searchInputValue == ''){   
+      is_search = false;
+    }
+    //3- API Fetch işlemimizi yapıyoruz.
+      const response =  await fetch("https://smarty.kerzz.com:4004/api/mock/getFeed", {
+          body: JSON.stringify(payload),
+          headers: {
+              Accept: "application/json",
+              Apikey: "bW9jay04ODc3NTU2NjExMjEyNGZmZmZmZmJ2",
+              "Content-Type": "application/json"
+          },
+          method: "POST"
+          })
+      const data = await response.json()
+      console.log(data.response.length , counter , checked)
+      //-4 Edindiğimiz datayı map ile dönüyoruz.
+      data.response.map((item , idx) => {
+        //5- API sorgusunun Search Inputtan gelip gelmemesine bağlı olarak yeni datalarımızın card handling 
+        //işlemini yapıyoruz.
+        if(is_search == true ){
+          if(item.title.toLowerCase().includes(searchInputValue.toLowerCase()) == true){ // Search Inputtan gelen veriye göre itemleri filtreleme.
+            cardHandling(item, idx);    
+          }
         }
+        else{
+          cardHandling(item, idx);
+        }
+      })
+      //6- Eğer search inputtan bir API sorgusu yapıldıysa tüm datayı Lazyload yöntemiyle parça parça alıp kontrol ediyoruz.
+      if(counter * 10 < total_api_data_length){
+        is_search == true ? postData(searchInputValue)  : null ;
+      } 
+      else {  //7- Eğer API sorgusu search input veya scroll farketmeksizin api üzerinde ki tüm dataları çekecek kadar yapıldıysa checked statusumuzu true
+        //ya çekiyoruz ve dönen veri olmayıp gereksiz sorgu olacağı için performans açısından api sorgusu yapılmasına izin vermiyoruz.
+        checked = true;
       }
-      else{
-        cardHandling(item, idx);
-        reset = true;
-      }
-    })
-    counter ++;
-    is_loading = false;
+      counter ++;
+      is_loading = false;
+    }
 }
 //Lokasyon Bilgisi Alma 
 function findLocation() {

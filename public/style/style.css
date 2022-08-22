@@ -83,6 +83,8 @@
 .contents .content_card .image_inclusive > img{
     width: inherit;
     height: inherit;
+  /*object-fit: cover    --> Burada fotoğrafların daha net çıkıp alana tam oturması için uygun kullanım bu kod bloğunun eklenmesidir ancak 
+    bu kod bloğunu eklediğimizde fotoğrafların üzerinde 10% gibi kampanya yazılarının görünmemesi sebebiyle tereddütte kalıp bu kod bloğunu eklemedim.*/  
 }
 .contents .content_card .image_inclusive > .rate_zone{
     position: absolute;

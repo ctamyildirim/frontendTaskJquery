@@ -105,7 +105,7 @@ const postData = async (searchInputValue) => {
     if (searchInputValue == undefined || searchInputValue == ''){   
       is_search = false;
     }
-    //3- API Fetch işlemimizi yapıyoruz.
+    //2- API Fetch işlemimizi yapıyoruz.
       const response =  await fetch("https://smarty.kerzz.com:4004/api/mock/getFeed", {
           body: JSON.stringify(payload),
           headers: {
@@ -117,9 +117,9 @@ const postData = async (searchInputValue) => {
           })
       const data = await response.json()
       console.log(data.response.length , counter , checked)
-      //-4 Edindiğimiz datayı map ile dönüyoruz.
+      //-3 Edindiğimiz datayı map ile dönüyoruz.
       data.response.map((item , idx) => {
-        //5- API sorgusunun Search Inputtan gelip gelmemesine bağlı olarak yeni datalarımızın card handling 
+        //4- API sorgusunun Search Inputtan gelip gelmemesine bağlı olarak yeni datalarımızın card handling 
         //işlemini yapıyoruz.
         if(is_search == true ){
           if(item.title.toLowerCase().includes(searchInputValue.toLowerCase()) == true){ // Search Inputtan gelen veriye göre itemleri filtreleme.
@@ -130,11 +130,11 @@ const postData = async (searchInputValue) => {
           cardHandling(item, idx);
         }
       })
-      //6- Eğer search inputtan bir API sorgusu yapıldıysa tüm datayı Lazyload yöntemiyle parça parça alıp kontrol ediyoruz.
+      //5- Eğer search inputtan bir API sorgusu yapıldıysa tüm datayı Lazyload yöntemiyle parça parça alıp kontrol ediyoruz.
       if(counter * 10 < total_api_data_length){
         is_search == true ? postData(searchInputValue)  : null ;
       } 
-      else {  //7- Eğer API sorgusu search input veya scroll farketmeksizin api üzerinde ki tüm dataları çekecek kadar yapıldıysa checked statusumuzu true
+      else {  //6- Eğer API sorgusu search input veya scroll farketmeksizin api üzerinde ki tüm dataları çekecek kadar yapıldıysa checked statusumuzu true
         //ya çekiyoruz ve dönen veri olmayıp gereksiz sorgu olacağı için performans açısından api sorgusu yapılmasına izin vermiyoruz.
         checked = true;
       }

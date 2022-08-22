@@ -116,7 +116,6 @@ const postData = async (searchInputValue) => {
           method: "POST"
           })
       const data = await response.json()
-      console.log(data.response.length , counter , checked)
       //-3 Edindiğimiz datayı map ile dönüyoruz.
       data.response.map((item , idx) => {
         //4- API sorgusunun Search Inputtan gelip gelmemesine bağlı olarak yeni datalarımızın card handling 
